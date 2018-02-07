@@ -118,8 +118,14 @@ function initGraphics() {
   square_root_text.y = 450;
   stage.addChild(square_root_text);
 
-  rootsymbol.x = square_root_text.x - 30;
-  rootsymbol.y = square_root_text.y - 20;
+  if (isChrome) {
+    rootsymbol.x = square_root_text.x - 30;
+    rootsymbol.y = square_root_text.y - 15;
+  } else { // working well on firefox
+    rootsymbol.x = square_root_text.x - 30;
+    rootsymbol.y = square_root_text.y - 20;
+  }
+
   stage.addChild(rootsymbol);
 
 	initListeners();
@@ -157,8 +163,13 @@ function updateText() {
   square_root_text.text = counter * counter + " = " + counter;
   square_root_text.x = (STAGE_WIDTH/4) * 3 - square_root_text.getMeasuredWidth()/2;
 
-  rootsymbol.x = square_root_text.x - 30;
-  rootsymbol.y = square_root_text.y - 20;
+  if (isChrome) {
+    rootsymbol.x = square_root_text.x - 30;
+    rootsymbol.y = square_root_text.y - 15;
+  } else { // working well on firefox
+    rootsymbol.x = square_root_text.x - 30;
+    rootsymbol.y = square_root_text.y - 20;
+  }
 }
 
 function updateGreenSquares() {
