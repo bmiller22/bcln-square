@@ -211,7 +211,8 @@ function initListeners() {
           updateText();
           playSound("click");
 
-          blue_circle.x += BLUE_CIRCLE_INCREMENT * counter * counter;
+          // floor(1position + number*number*(100position - 1position)/100)
+          blue_circle.x = Math.floor(50 + counter * counter * ((795 - 50)/100))
         }
 
 
@@ -234,7 +235,6 @@ function initListeners() {
   // for determining position to move blue circle
   // numberline.on("mousedown", function(event) {
   //   console.log("x: " + event.stageX);
-  //   console.log("y: " + event.stageY);
   // });
 
 }
