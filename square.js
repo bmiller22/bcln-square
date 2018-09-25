@@ -211,8 +211,7 @@ function initListeners() {
           updateText();
           playSound("click");
 
-          // floor(1position + number*number*(100position - 1position)/100)
-          blue_circle.x = Math.floor(50 + counter * counter * ((795 - 50)/100))
+          blue_circle.x = Math.floor(BLUE_CIRCLE_START + counter * counter * ((795 - BLUE_CIRCLE_START)/100));
         }
 
 
@@ -222,20 +221,18 @@ function initListeners() {
           black_circle.x -= GRID_SIZE;
           black_circle.y -= GRID_SIZE;
 
-          blue_circle.x -= BLUE_CIRCLE_INCREMENT * counter * counter;
-
           counter--;
           updateGreenSquares();
           updateText();
           playSound("click");
+
+          // if statement required to fix bug where counter=1, so start position ends up being BLUE_CIRCLE_START+7 pixels instead of BLUE_CIRCLE_START.
+          if (counter == 1) blue_circle.x = BLUE_CIRCLE_START;
+          else blue_circle.x = Math.floor(BLUE_CIRCLE_START + counter * counter * ((795 - BLUE_CIRCLE_START)/100));
+
         }
     }
   });
-
-  // for determining position to move blue circle
-  // numberline.on("mousedown", function(event) {
-  //   console.log("x: " + event.stageX);
-  // });
 
 }
 
